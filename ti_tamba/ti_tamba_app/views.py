@@ -11,3 +11,18 @@ from models import VideoLibrary
 def video_library(request):
     videos = VideoLibrary.objects.all()
     return render(request, 'shows/video.html', {'videos' : videos})
+
+#Recent videos / shows watched
+def recent_video(request):
+    videos = VideoLibrary.objects.all()
+    return render(request, 'shows/video.html', {'videos' : videos})
+
+#History of all videos / shows watched
+def history_video(request):
+    videos = VideoLibrary.objects.all()
+    return render(request, 'shows/video.html', {'videos' : videos})
+
+#New videos / shows
+def new_video(request):
+    videos = VideoLibrary.objects.all()
+    return render(request, 'shows/video.html', {'videos' : videos})
