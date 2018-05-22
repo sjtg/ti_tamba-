@@ -3,9 +3,21 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from models import VideoLibrary
+from models import *
 
 # Create your views here.
+
+#Home page of the website
+def home(request):
+    home = VideoLibrary.objects.all()
+    return render(request, 'shows/home.html', {'home' : home})
+
+
+#Dashboard page
+
+def dashboard(request):
+    dashboard = VideoLibrary.objects.all()
+    return render(request, 'shows/dashboard.html', {'dashboard' : dashboard})
 
 #Video Library page
 def video_library(request):
