@@ -1,8 +1,105 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% load staticfiles %}
+
+
 {% block content  %}
 
-testing home page
+<header class="white-text" style="background-image: url({% static 'img/shutterstock_557008489.jpg' 10%  %}) ;  background-size: 100%;">
+  <div class="container">
+    <h1>Watch Africa</h1>
+		<p>In the <b>Palm of you Hands</b></p>
+  </div>
+</header>
 
+<div id='nav-bg'></div>
+
+<section id='about'>
+  <div class='container'>
+		<p class="flow-text">Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+		<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur blandit tempus porttitor.</p>
+		<p>Donec ullamcorper nulla non metus auctor fringilla. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras mattis consectetur purus sit amet fermentum.</p>
+		<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+	</div>
+</section>
+
+
+<!-- Floating button -->
+<div class="fixed-action-btn horizontal direction-top hide-on-large-only"><a class="btn-floating btn-large red pulse tooltipped" data-position="left" data-delay="50" data-tooltip="Contact Me"><i class="large material-icons">menu</i></a><ul><li><a class="btn-floating tooltipped blue" href="https://gitter.im/Dogfalo/materialize" data-position="left" data-delay="50" data-tooltip="Chat with me"><i class="material-icons">chat</i></a></li><li><a class="btn-floating tooltipped green" href="tel:15558675309" data-position="left" data-delay="50" data-tooltip="Call me"><i class="material-icons">phone</i></a></li></ul></div>
+
+
+
+
+
+<!-- <div class="parallax-container">
+    <div class="parallax"><img src="{% static 'images/bg.jpg' %}"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <input  type="text" placeholder="Search..">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Parallax</h2>
+      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="images/parallax2.jpg"></div>
+  </div>
+
+<br>
+<br>
+
+
+ <br>
+ <br>
+
+
+<div class="row">
+    <div class="col s3">
+      <label for="mydate" class="">Date</label>
+      <input id="mydate" type="date" class="datepicker">
+    </div>
+</div>
+
+<div class="input-field col s3">
+    <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">USD</option>
+        <option value="2">CAD</option>
+    </select>
+    <label>Select Currency</label>
+</div>
+
+<br>
+<br>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating waves-effect waves-light btn-large purple pulse">
+                <i class="material-icons">share</i>
+            </a>
+            <ul>
+                <li>
+                    <span class="btn-floating white" onclick="shareFacebook()" style="transform: scaleX(0.4) scaleY(0.4) translateY(40px) translateX(0px); opacity: 0;">
+                        <i class="material-icons">
+                            <img src="public/canvas/facebook@2x.png" class="scope-icon-cogni-ux-1" alt="">
+                        </i>
+                    </span>
+                </li>
+                <li>
+                    <a class="btn-floating white" href="https://twitter.com/?status=" style="transform: scaleX(0.4) scaleY(0.4) translateY(40px) translateX(0px); opacity: 0;">
+                        <i class="material-icons ">
+                            <img src="public/canvas/twitter@2x.png " class="scope-icon-cogni-ux-1 " alt=" ">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div> -->
 
 {% endblock %}
