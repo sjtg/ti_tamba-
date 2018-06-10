@@ -7,8 +7,6 @@ header {z-index: 2;}
 #nav-bg {z-index: 1;}
 
 
-
-//
 body {
   background: #eee;
 }
@@ -19,7 +17,8 @@ nav {
 header {
   position: relative;
   background-color: black;
-	padding: 25em;
+	padding: 30em;
+  padding-left: 20%;
 	height: 100vh;
 	&:before {
 		content: ' ';
