@@ -4,11 +4,12 @@
     $('.select').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
+    $('.button-collapse').sideNav();
+    $('.collapsible').collapsible();
+    $('select').material_select();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
-
-
 
 $(document).ready(function(){
   // MODAL
