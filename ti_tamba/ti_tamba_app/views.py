@@ -16,17 +16,17 @@ def home(request):
 #Dashboard page
 
 def dashboard(request):
-    dashboard = VideoLibrary.objects.all()
+    dashboard = VideoLibrary.objects.all().order_by("-timestamp")
     return render(request, 'shows/dashboard.html', {'dashboard' : dashboard})
 
 #Video Library page
 def video_library(request):
-    videos = VideoLibrary.objects.all()
+    videos = VideoLibrary.objects.all().order_by("-timestamp")
     return render(request, 'shows/video.html', {'videos' : videos})
 
 #Recent videos / shows watched
 def recent_video(request):
-    videos = VideoLibrary.objects.all()
+    videos = VideoLibrary.objects.all().order_by("-timestamp")
     return render(request, 'shows/video.html', {'videos' : videos})
 
 #History of all videos / shows watched
