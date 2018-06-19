@@ -16,8 +16,17 @@ def home(request):
 #Dashboard page
 
 def dashboard(request):
-    dashboard = VideoLibrary.objects.all().order_by("-timestamp")
-    return render(request, 'shows/dashboard.html', {'dashboard' : dashboard})
+    Dashboard = VideoLibrary.objects.all().order_by("-timestamp")
+    query = request.GET.get("search")
+    if query:
+        Dashboard = Dashboard.filter(
+            Q(title__icontains=query)|
+            Q(description__icontains=query)|
+            Q(genre__icontains=query)|
+            Q(age_restriction__icontains=query)|
+            Q(year_of_release__icontains=query)
+        ).distinct()
+    return render(request, 'shows/dashboard.html', {'Dashboard' : Dashboard})
 
 #Video Library page
 def video_library(request):
@@ -38,3 +47,6 @@ def history_video(request):
 def new_video(request):
     videos = VideoLibrary.objects.all()
     return render(request, 'shows/video.html', {'videos' : videos})
+
+
+# Upload VideoLibrary

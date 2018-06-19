@@ -1,0 +1,60 @@
+<!-- navbar content here  -->
+  <nav class ="teal z-depth-2" class="transparent z-depth-2">
+
+<ul class="left hide-on-med-and-down">
+  <a href="{% url 'home'  %}" target="_blank" class="brand-logo">Ti<span class="hide-on-small-only">&nbsp;Tamba</span></a>
+</ul>
+
+    <ul class="right hide-on-med-and-down">
+        <li><a href="#">Contribute</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Search</a></li>
+          <li><a href="#">Upload</a></li>
+        <li><a href="#">Contact us</a></li>
+        <!-- Dropdown Trigger -->
+        <li>
+          <a  class="dropdown-trigger" href="#!" data-target="dropdown1">Accounts<i class="material-icons right">arrow_drop_down</i></a>
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content">
+            <!-- test -->
+
+            {% if request.user.is_authenticated %}
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.username }}
+                </a>
+                <a class="dropdown-item" href="{% url 'my_account' %}">My account</a>
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+              </li>
+              {% else %}
+              <li><a href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+
+              {% endif %}
+
+            <!-- end test  -->
+          </ul>
+        </li>
+      </ul>
+
+  </nav>
+
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
