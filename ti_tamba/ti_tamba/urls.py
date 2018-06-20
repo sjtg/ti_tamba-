@@ -25,9 +25,10 @@ from ti_tamba_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home, name="home"),
-    url(r'^dashboard/$', views.dashboard, name="dashboard"),
-    url(r'^library/$', views.video_library, name="library"),
+    url(r'^$', views.Home, name="home"),
+    url(r'^dashboard/$', views.Dashboards, name="dashboard"),
+    url(r'^library/$', views.VideoLibraries, name="library"),
+    url(r'^upload/$', views.UploadVideo, name="upload"),
     url(r'^signup/$', accounts_views.signup, name='signup' ),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),

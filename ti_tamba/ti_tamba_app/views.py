@@ -1,21 +1,28 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.views.generic import View
+# from django.template import RequestContext
+# from django.http import JsonResponse
+from .models import *
+from .forms import *
+from django.utils import timezone
 
-from django.shortcuts import render
-
-from models import *
+import time
 
 # Create your views here.
 
 #Home page of the website
-def home(request):
+def Home(request):
     home = VideoLibrary.objects.all()
     return render(request, 'shows/home.html', {'home' : home})
 
 
 #Dashboard page
-
-def dashboard(request):
+@login_required
+def Dashboards(request):
     Dashboard = VideoLibrary.objects.all().order_by("-timestamp")
     query = request.GET.get("search")
     if query:
@@ -29,7 +36,8 @@ def dashboard(request):
     return render(request, 'shows/dashboard.html', {'Dashboard' : Dashboard})
 
 #Video Library page
-def video_library(request):
+@login_required
+def VideoLibraries(request):
     videos = VideoLibrary.objects.all().order_by("-timestamp")
     return render(request, 'shows/video.html', {'videos' : videos})
 
@@ -50,3 +58,17 @@ def new_video(request):
 
 
 # Upload VideoLibrary
+@login_required
+def UploadVideo(request):
+    # if request.user.is_staff or request.user.is_superuser
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_video = form.save() #commit=False
+            new_video.user = request.user
+            new_video.save()
+            return redirect('home')
+    else:
+        form = VideoForm()
+
+    return render(request, 'shows/upload.html', { 'form' : form})

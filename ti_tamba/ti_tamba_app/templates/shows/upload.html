@@ -1,0 +1,31 @@
+{% extends 'base2.html' %}
+
+{% load static  %}
+{% load widget_tweaks %}
+
+{% block content  %}
+
+<div class="container">
+  <h1 class="text-center logo my-4">
+    Upload Video
+  </h1>
+  <div class="row justify-content-center">
+    <div class="col s10">
+      <div class="card" class="text-center">
+        <div class="card-body">
+          <form method="POST" enctype="multipart/form-data"  multiple novalidate>
+            {% csrf_token %}
+            {% include 'includes/form.html' %}
+
+            <br>
+            <button type="submit" class="btn btn-primary btn-block"><i class="material-icons left">add_a_video</i>Upload</button>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
