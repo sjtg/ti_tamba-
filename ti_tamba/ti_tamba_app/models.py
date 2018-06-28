@@ -28,7 +28,8 @@ class VideoLibrary(models.Model):
     age_restriction = models.IntegerField(default=0)
     year_of_release = models.DateTimeField(u'Day of Release', help_text=u'Day of the Release')
     image_poster = models.ImageField(upload_to='posters/', blank=False, null=True)
-    files = models.FileField(upload_to='videos/', blank=False, null=True)
+    video_trailer = models.FileField(upload_to='video/video_trailers/', blank=False, null=True)
+    videos = models.FileField(upload_to='videos/', blank=False, null=True)
     uploaded_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 

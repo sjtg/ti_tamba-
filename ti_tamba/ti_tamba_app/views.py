@@ -56,6 +56,10 @@ def new_video(request):
     videos = VideoLibrary.objects.all()
     return render(request, 'shows/video.html', {'videos' : videos})
 
+#media player
+def mediaPlayer(request):
+    medias = VideoLibra.objects.all()
+    return render(request, 'shows/video.html', {'new_video' : medias})
 
 # Upload VideoLibrary
 @login_required
