@@ -1,5 +1,6 @@
 (function($){
   $(function(){
+    $('.modal').modal();
     $('.dropdown-trigger').dropdown();
     $('.select').formSelect();
     $('.sidenav').sidenav();
@@ -8,11 +9,13 @@
     $('.collapsible').collapsible();
     $('select').material_select();
 
+
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 
 $(document).ready(function(){
   // MODAL
+  $('.modal').modal();
   $('.sidenav').sidenav();
 	$('.fixed-action-btn').floatingActionButton();
 	$('.tooltipped').tooltip();
