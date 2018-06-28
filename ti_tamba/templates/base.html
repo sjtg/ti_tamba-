@@ -15,6 +15,7 @@
     <![endif]-->
     <!--Import Google Icon Font-->
 
+
     <link href="{% static 'css/icon.css'%}" rel="stylesheet">
     <link href="{% static 'css/materialize.css' %}" rel="stylesheet">
     <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
@@ -22,7 +23,8 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
 
-
+    <!-- HTTPS required. HTTP will give a 403 forbidden response -->
+    <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
     <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <script src="{% static 'js/init.js' %}"></script>
 

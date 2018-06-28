@@ -9,12 +9,22 @@ from django.db import models
 
 # Create your models here.
 
+#vide types
+class VideoCategory(models.Model):
+    videoCategory = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        videoCategory = str(self.videoCategory)
+        return videoCategory
+
+
+# video library
 class VideoLibrary(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=550, blank=True)
-    genre = models.CharField(max_length=100, blank=True)
+    genre = models.ForeignKey(VideoCategory, blank=True,null=True, related_name="videoCategory_genre")
+    # actor = models.ForeignKey(Actors, related_name="actor_ref")
     age_restriction = models.IntegerField(default=0)
     year_of_release = models.DateTimeField(u'Day of Release', help_text=u'Day of the Release')
     image_poster = models.ImageField(upload_to='posters/', blank=False, null=True)
@@ -25,3 +35,14 @@ class VideoLibrary(models.Model):
     def __unicode__(self):
         title = str(self.title)
         return title
+
+#Actor models
+class Actors(models.Model):
+    actors = models.CharField(max_length=50)
+    actor_profile = models.CharField(max_length=550)
+    image_actor = models.ImageField(upload_to='Actor_Images/', blank=False, null=True)
+    videoLibraries = models.ForeignKey(VideoLibrary,blank=True, null=True, related_name='videoLibraries_ref')
+
+    def __unicode__(self):
+        actors = str(self.actors)
+        return actors

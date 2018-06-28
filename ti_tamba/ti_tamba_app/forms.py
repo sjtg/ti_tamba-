@@ -9,5 +9,5 @@ from .models import *
 
 class VideoForm(forms.ModelForm):
 	class Meta:
-		model= UploadPhotos
-		fields = ['title', 'description', 'images','genre','image_poster', 'files', 'age_restriction', 'year_of_release' ]
+		model= VideoLibrary
+		fields = ['title', 'description', 'image_poster','genre','image_poster', 'files', 'age_restriction', 'year_of_release' ]
