@@ -33,7 +33,7 @@ def Dashboards(request):
             Q(age_restriction__icontains=query)|
             Q(year_of_release__icontains=query)
         ).distinct()
-    return render(request, 'shows/dashboard.html', {'Dashboard' : Dashboard})
+    return render(request, 'shows/dashboard.html', {'new_video' : Dashboard})
 
 #Video Library page
 @login_required

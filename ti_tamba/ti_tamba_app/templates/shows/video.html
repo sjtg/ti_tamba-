@@ -1,7 +1,60 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% load static %}
 
-{% block content %}
- Video dashboard
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block content  %}
+
+<div class="container">
+  <div class="left card-title">
+        <h4>Dashboard</h4>
+  </div>
+  <div class="row justify-content-center">
+
+    <div class="col s12 lg6">
+
+      <div class="row" style="margin-top: 20px">
+
+
+      <br>
+
+      {% for video in new_video %}
+        <div class="container">
+
+
+ <!-- {% if forloop.first %}<div class="row">{% endif %} -->
+          <div class="col s12 m5">
+            <div class="card">
+
+              <div class="card-image waves-effect waves-block waves-light">
+                <img src="{{ video.image_poster.url }}"  class="thumbnail">
+                <span class="card-title">{{video.title}}</span>
+
+                <a href ="{% url 'dashboard' %}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a>
+              <!-- <h6 class="card-title">Title: {{new_photos.title}}</h6> -->
+            </div>
+            <div class="card-content">
+              <p><b>Title</b>:{{video.title}}</p>
+              <p><b>Description</b> : {{video.description}}</p>
+              {{video.timestamp}}ago
+              <a href="{% url 'dashboard'  %}" >View</a>
+            </div>
+
+          </div>
+
+          </div>
+          {% if forloop.counter|divisibleby:4 %}</div><div class="row">{% endif %}
+              {% if forloop.last %}</div>{% endif %}
+        </div>
+{% endfor %}
+      </div>
+    </div>
+</div>
+</div>
+
+
+
 {% endblock %}
