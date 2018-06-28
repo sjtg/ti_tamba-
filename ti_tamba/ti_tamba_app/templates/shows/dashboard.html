@@ -38,18 +38,27 @@
 
               <!-- testing models -->
               <!-- Modal Structure -->
+
                   <div id="modal1" class="modal">
+
                     <div class="modal-content">
-
+                      {% for preview in new_video %}
                       <video class="responsive-video" controls>
-                      <source width="100%" height="480" src="{{video.video_trailer.url}}" type="video/mp4"  frameborder="0" allowfullscreen>
-                      </video>
 
+                         <source src=" {{preview.video_trailer.url}}" type="video/mp4">
+
+
+                      </video>
+                        {% endfor %}
                     </div>
+
                     <div class="modal-footer">
                       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
+
                   </div>
+
+
               <!-- end test -->
 
             </div>
