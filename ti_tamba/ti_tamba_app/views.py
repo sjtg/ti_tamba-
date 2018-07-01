@@ -24,6 +24,7 @@ def Home(request):
 @login_required
 def Dashboards(request):
     Dashboard = VideoLibrary.objects.all().order_by("-timestamp")
+
     query = request.GET.get("search")
     if query:
         Dashboard = Dashboard.filter(
@@ -33,7 +34,8 @@ def Dashboards(request):
             Q(age_restriction__icontains=query)|
             Q(year_of_release__icontains=query)
         ).distinct()
-    return render(request, 'shows/dashboard.html', {'new_video' : Dashboard})
+    return render(request, 'shows/dashboard.html', {'new_video' : Dashboard,})
+
 
 #Video Library page
 @login_required
@@ -42,24 +44,30 @@ def VideoLibraries(request):
     return render(request, 'shows/video.html', {'videos' : videos})
 
 #Recent videos / shows watched
-def recent_video(request):
-    videos = VideoLibrary.objects.all().order_by("-timestamp")
-    return render(request, 'shows/video.html', {'videos' : videos})
+# def recent_video(request):
+#     videos = VideoLibrary.objects.all().order_by("-timestamp")
+#     return render(request, 'shows/video.html', {'videos' : videos})
 
 #History of all videos / shows watched
-def history_video(request):
-    videos = VideoLibrary.objects.all()
-    return render(request, 'shows/video.html', {'videos' : videos})
+# def history_video(request):
+#     videos = VideoLibrary.objects.all()
+#     return render(request, 'shows/video.html', {'videos' : videos})
 
 #New videos / shows
-def new_video(request):
-    videos = VideoLibrary.objects.all()
-    return render(request, 'shows/video.html', {'videos' : videos})
+# def new_video(request):
+#     videos = VideoLibrary.objects.all()
+#     return render(request, 'shows/video.html', {'videos' : videos})
 
 #media player
 def mediaPlayer(request):
     medias = VideoLibra.objects.all()
     return render(request, 'shows/video.html', {'new_video' : medias})
+
+#video detail function
+def video_detail(request, pk):
+    posts = get_object_or_404(VideoLibrary, pk=pk)
+    return render(request, 'shows/video_detail.html', {'new_video': posts})
+
 
 # Upload VideoLibrary
 @login_required
@@ -76,3 +84,25 @@ def UploadVideo(request):
         form = VideoForm()
 
     return render(request, 'shows/upload.html', { 'form' : form})
+
+
+
+
+
+# Edit function
+@login_required
+def EditVideos(request, pk):
+    # if request.user.is_staff or request.user.is_superuser
+    new_photo = get_object_or_404(VideoLibrary, pk=pk)
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=new_video)
+        if form.is_valid():
+            new_video = form.save() #commit=False
+            new_video.user = request.user
+            new_video.uploaded_at = timezone.now()
+            new_video.save()
+            return redirect('video_detail', pk=new_video.pk)
+    else:
+        form = PhotoForm(instance=new_video)
+
+    return render(request, 'album/edit.html', { 'form' : form})

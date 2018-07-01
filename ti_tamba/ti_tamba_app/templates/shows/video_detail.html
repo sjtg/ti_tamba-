@@ -1,0 +1,133 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block content  %}
+
+<div class="container">
+  <br>
+  <div class="left card-title">
+        <h4>Dashboard - {{new_video.title}}</h4>
+  </div>
+  <div class="row justify-content-center">
+
+    <div class="col s12 lg6">
+
+      <div class="row" style="margin-top: 20px">
+
+
+      <br>
+
+      <!-- preview -->
+
+        <div class="container">
+
+{% if new_video.video_trailer%}
+ <!-- {% if forloop.first %}<div class="row">{% endif %} -->
+          <div class="col s12 m7">
+            <div class="card">
+
+              <div class="card-image waves-effect waves-block waves-light">
+                <img src="{{ new_video.image_poster.url }}"  class="thumbnail">
+            </div>
+            <!-- <div class="card-content">
+              <p>Author:{{new_photos.user}}</p>
+              {{new_photos.timestamp}}ago
+              <a href="{% url 'dashboard'  %}" >View</a>
+            </div> -->
+
+          </div>
+          <div class="card-content">
+            <p>Description: {{new_video.user}}</p>
+            <p>Author: {{new_video.user}}</p>
+
+
+            <p>
+              <a  class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons">play_circle_outline</i> </a>
+
+
+
+              <a class="waves-effect waves-light btn" href="{{ new_video.video_trailer.url }}" download><i class="material-icons left">cloud_download</i>Download</a>
+              {% if user.is_authenticated %}
+               <a class="waves-effect waves-light btn" href="{% url 'video_edit' pk=new_video.pk %}"><i class="material-icons left">cloud_edit</i>Edit</a>
+               {% endif %}
+
+
+               <!-- model for preview  -->
+               <div id="modal1" class="modal">
+
+                 <div class="modal-content">
+
+                   <video class="responsive-video" controls>
+                      <source src=" {{new_video.video_trailer.url}}" type="video/mp4">
+                   </video>
+
+                  <ul>
+                    <li>
+                      <b>Title:</b> {{new_video.title}}
+                    </li>
+
+                  <li>
+                    <b>Description:</b>  {{new_video.description}}
+                  </li>
+                  <li>
+                      <b>Genre:</b> {{new_video.genre}}
+                  </li>
+                  <li>
+                      <b>Age:</b> {{new_video.age_restriction}}
+                  </li>
+                  <li>
+                    <b>Year of Release:</b>  {{new_video.year_of_release}}
+                  </li>
+
+                </ul>
+              </div>
+
+
+                 <div class="modal-footer">
+                   <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                 </div>
+
+               </div>
+
+               <!-- end of preview -->
+             </p>
+
+
+
+          </div>
+
+          </div>
+          {% endif %}
+
+          <!-- list of shows -->
+          <div class="col s12 m2">
+            <div class="card">
+              Episodes
+              <ul>
+                  <li>
+                    <a href=""></a>
+                  </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+
+        </div>
+
+      <!-- end of video preview -->
+      </div>
+
+
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}

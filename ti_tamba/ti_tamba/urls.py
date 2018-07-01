@@ -26,6 +26,8 @@ from ti_tamba_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.Home, name="home"),
+    url(r'^video/(?P<pk>\d+)/$', views.video_detail, name="video_detail"),
+    url(r'^video/(?P<pk>\d+)/edit/$', views.EditVideos, name="video_edit"),
     url(r'^dashboard/$', views.Dashboards, name="dashboard"),
     url(r'^library/$', views.VideoLibraries, name="library"),
     url(r'^upload/$', views.UploadVideo, name="upload"),
