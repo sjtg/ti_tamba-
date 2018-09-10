@@ -9,7 +9,36 @@ from django.db import models
 
 # Create your models here.
 
-#vide types
+
+# Music Category
+class MusicCategory(models.Model):
+
+
+
+# Music Library
+class MusicLibrary(models.Model):
+
+
+
+# Picture Category
+class PictureCategory(models.Model):
+
+
+# Picture Library 
+class PictureLibrary(models.Model):
+
+
+# Book Category
+class BooksCategory(models.Model):
+
+
+# Book Library
+class BookLibrary(models.Model):
+
+
+
+
+# Video Category 
 class VideoCategory(models.Model):
     videoCategory = models.CharField(max_length=50)
 
@@ -18,7 +47,7 @@ class VideoCategory(models.Model):
         return videoCategory
 
 
-# video library
+# Video library
 class VideoLibrary(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=255, blank=True)
